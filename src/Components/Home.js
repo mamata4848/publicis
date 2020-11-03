@@ -141,7 +141,7 @@ export default class Home extends React.Component{
 									const launchSuccess = String(spaceX.launch_success)
 									const missionIdList = spaceX.mission_id
 									const landingSuccess = String(spaceX.rocket.first_stage.cores[0].land_success)
-									//const authors = book.authors.join(', ');
+									
 
 									return (
 									<div className="book" key={index}>
@@ -149,7 +149,6 @@ export default class Home extends React.Component{
 										<h3>{spaceX.mission_name} # {spaceX.flight_number}</h3>
 
 										<div className="details">
-											{/* <p>👨: {authors}</p> */}
 											<h4>Mission Ids: 
 											{missionIdList && Object.entries(missionIdList).map(([key, value]) => {
 												return (
