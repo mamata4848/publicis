@@ -4,7 +4,7 @@ https://epic-feynman-b910d0.netlify.app/
 
 
 
-gitgub repo link
+github repo link
 
 https://github.com/mamata4848/publicis
 
