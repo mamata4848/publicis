@@ -21,31 +21,26 @@ export default class Home extends React.Component{
    options = {
      2006: '2006', 2007:'2007', 2008:'2008',2009:'2009',2010:'2010',2011:'2011',2012:'2012',2013:'2013',2014:'2014',2015:'2015',2016:'2016',2017:'2017',2018:'2018',2019:'2019',2020:'2020'
    }
+ 
+ 
   landOptionSelectedTrue = (e) =>{
-	  alert()
 		var getLandVal= e.target.value
-		alert(getLandVal)
 		if(getLandVal==="True"){
 			axios.get("https://api.spaceXdata.com/v3/launches?limit=100&launch_success=true&land_success=true").then( response => {
-				console.log(response.data)
 				this.setState({spacexData:response.data})
 			
 			})
 		}
 	}
 	launchOptionSelectedTrue = () =>{
-		alert()
 		axios.get("https://api.spaceXdata.com/v3/launches?limit=100&launch_success=true").then( response => {
-			console.log(response.data)
 			this.setState({spacexData:response.data})
-			
 		})
 	}
 	onChangeHandler(e) {
 		axios.get("https://api.spaceXdata.com/v3/launches?limit=100").then( response => {
 			this.setState({spacexData:response.data})
 			let newArray = this.state.spacexData.filter((d)=>{
-				console.log(d)
 				  let searchValue = d.launch_year.toLowerCase();
 				  return searchValue.indexOf(e.target.value) !== -1;
 			  });
@@ -57,7 +52,6 @@ export default class Home extends React.Component{
 	}
 	launchOptionSelectedFalse(e) {
 		axios.get("https://api.spaceXdata.com/v3/launches?limit=100").then( response => {
-			console.log(response.data)
 			this.setState({spacexData:response.data})
 			let newArray = this.state.spacexData.filter((d)=>{
 				var t=String(d.launch_success)
@@ -72,10 +66,8 @@ export default class Home extends React.Component{
 	}
 	landOptionSelectedFalse(e) {
 		axios.get("https://api.spaceXdata.com/v3/launches?limit=100").then( response => {
-			console.log(response.data)
 			this.setState({spacexData:response.data})
 			let newArray = this.state.spacexData.filter((d)=>{
-				console.log(d.rocket.first_stage.cores[0].land_success)
 				var t=String(d.rocket.first_stage.cores[0].land_success)
 				  let searchValue = t.toLowerCase();
 				  return searchValue.indexOf(e.target.value) !== -1;
@@ -88,17 +80,14 @@ export default class Home extends React.Component{
 	}
 	clearSelectedFilter = () =>{
 		axios.get("https://api.spaceXdata.com/v3/launches?limit=100").then( response => {
-			console.log(response.data)
 			this.setState({spacexData:response.data})
 		})
 	}
 
   componentDidMount(){
     axios.get("https://api.spaceXdata.com/v3/launches?limit=100").then( response => {
-      console.log(response.data)
-      this.setState({spacexData:response.data})
+      	this.setState({spacexData:response.data})
 		this.setState({asyncLoad:"true"});
-		
     })
   }
   render(){ 
